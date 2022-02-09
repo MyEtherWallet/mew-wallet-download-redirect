@@ -1,0 +1,38 @@
+<html>
+    <head>
+        <script type="text/javascript">
+            const appstore = "https://apps.apple.com/app/apple-store/id1464614025?pt=118781877&ct=sharefriend&mt=8"
+            const playstore = "https://play.google.com/store/apps/details?id=com.myetherwallet.mewwallet&referrer=utm_source%3Dsharefriend"
+            const defaultUrl = "https://www.mewwallet.com"
+            const isMobile = {
+                    Android: function () {
+                        return navigator.userAgent.match(/Android/i);
+                    },
+                    BlackBerry: function () {
+                        return navigator.userAgent.match(/BlackBerry/i);
+                    },
+                    iOS: function () {
+                        return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+                    },
+                    Opera: function () {
+                        return navigator.userAgent.match(/Opera Mini/i);
+                    },
+                    Windows: function () {
+                        return navigator.userAgent.match(/IEMobile/i);
+                    },
+                    any: function () {
+                        return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
+                    }
+
+                };
+                if (isMobile.Android()) {
+                    document.location.href = playstore;
+                }
+                else if (isMobile.iOS()) {
+                    document.location.href = appstore;
+                } else {
+                    document.location.href = defaultUrl;
+                }
+        </script>
+    </head>
+</html>
