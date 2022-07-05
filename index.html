@@ -1,9 +1,16 @@
 <html>
     <head>
         <script type="text/javascript">
-            const appstore = "https://apps.apple.com/app/apple-store/id1464614025?pt=118781877&ct=sharefriend&mt=8"
-            const playstore = "https://play.google.com/store/apps/details?id=com.myetherwallet.mewwallet&referrer=utm_source%3Dsharefriend"
+            const appstore = "https://apps.apple.com/app/apple-store/id1464614025?pt=118781877&mt=8&ct="
+            const playstore = "https://play.google.com/store/apps/details?id=com.myetherwallet.mewwallet&referrer=utm_source%3D"
             const defaultUrl = "https://www.mewwallet.com"
+            const GENERIC_SHARE = "sharefriend"
+            const SOURCE = "source"
+            const getSource = ()=>{
+                const url = new URL(document.URL)
+                if(!url.searchParams.has(SOURCE)) return false;
+                else return url.searchParams.get(SOURCE)
+            }
             const isMobile = {
                     Android: function () {
                         return navigator.userAgent.match(/Android/i);
@@ -26,10 +33,12 @@
 
                 };
                 if (isMobile.Android()) {
-                    document.location.href = playstore;
+                    //console.log(getSource() ? playstore  + getSource() : playstore + GENERIC_SHARE)
+                  document.location.href = getSource() ? playstore + getSource() : playstore + GENERIC_SHARE;
                 }
                 else if (isMobile.iOS()) {
-                    document.location.href = appstore;
+                    //console.log(getSource() ? appstore  + getSource() : appstore + GENERIC_SHARE)
+                   document.location.href = getSource() ? appstore + getSource() : appstore + GENERIC_SHARE;
                 } else {
                     document.location.href = defaultUrl;
                 }
