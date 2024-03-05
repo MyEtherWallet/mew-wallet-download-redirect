@@ -6,7 +6,7 @@
       const playstore =
         "https://play.google.com/store/apps/details?id=com.myetherwallet.mewwallet&referrer=utm_source%3D";
       const defaultUrl = "https://www.mewwallet.com/?referrer=";
-      const acitivityURL = "https://download.mewwallet.dev/record";
+      const activityUrl = "https://download.mewwallet.dev/record";
       const GENERIC_SHARE = "sharefriend";
       const SOURCE = "source";
       const getSource = () => {
@@ -43,7 +43,7 @@
       const doTheRedirect = (url, platform, utm) => {
         if (!fetch) document.location.href = `${url}${utm}`;
         else
-          fetch(`${acitivityURL}?platform=${platform}&utm=${utm}`).finally(
+          fetch(`${activityUrl}?platform=${platform}&utm=${utm}`).finally(
             () => {
               document.location.href = `${url}${utm}`;
             }
