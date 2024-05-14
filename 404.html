@@ -52,8 +52,8 @@
       const utm = getSource() ? getSource() : GENERIC_SHARE;
       if (isMobile.Android()) {
         doTheRedirect(playstore, "android", utm);
-      // } else if (isMobile.iOS()) {
-      //   doTheRedirect(appstore, "ios", utm);
+      } else if (isMobile.iOS()) {
+        doTheRedirect(appstore, "ios", utm);
       } else {
         doTheRedirect(defaultUrl, "web", utm);
       }
